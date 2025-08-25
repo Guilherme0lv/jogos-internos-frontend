@@ -1,16 +1,16 @@
-# projeto_web
+# Jogos Internos Front-End 
 
-A new Flutter project.
+FrontEnd para controle de jogos internos de uma universidade. Feita para fins acadêmicos.
 
-## Getting Started
+## 🧰 Stack utilizada
 
-This project is a starting point for a Flutter application.
+**Front-end:** Dart, Flutter
+**Back-end:** Java, Spring Boot
 
-A few resources to get you started if this is your first Flutter project:
+## 🔗Repositorio do back-end:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Link:** [https://github.com/Guilherme0lv/jogos-internos-api](https://github.com/Guilherme0lv/jogos-internos-api)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📩 Feedback
+
+Se você tiver algum feedback, por favor deixe-me saber por meio de gnascimento1330@gmail.com
