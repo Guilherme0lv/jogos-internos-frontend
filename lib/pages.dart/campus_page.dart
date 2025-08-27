@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_web/controllers/campus_controller.dart';
 import 'package:projeto_web/controllers/usuario_controller.dart';
+import 'package:projeto_web/widgets/custom_drawer.dart';
 import 'package:projeto_web/widgets/custom_footer.dart';
 import 'package:projeto_web/widgets/dialog/campus_dialog.dart';
 
@@ -47,6 +48,7 @@ class _CampusPageState extends State<CampusPage> {
     final bool isAdmin = usuarioController.usuario?.tipoUsuario == "ADMIN";
 
     return Scaffold(
+      drawer: CustomDrawer(usuario: usuarioController.usuario),
       appBar: AppBar(title: const Text("Campus")),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -98,7 +100,7 @@ class _CampusPageState extends State<CampusPage> {
                             fontSize: 14,
                           ),
                         ),
-                        // Ícone de edição só para ADMIN
+                       
                         trailing: isAdmin
                             ? IconButton(
                                 icon: const Icon(Icons.menu),
@@ -119,7 +121,7 @@ class _CampusPageState extends State<CampusPage> {
                 );
               },
             ),
-      // Botão de adicionar só para ADMIN
+   
       floatingActionButton: isAdmin
           ? FloatingActionButton(
               onPressed: () {

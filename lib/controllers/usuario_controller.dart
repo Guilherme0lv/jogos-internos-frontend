@@ -22,7 +22,7 @@ class UsuarioController extends ChangeNotifier {
       users = await usuarioService.getUsers();
     } catch (e) {
       debugPrint("Erro ao buscar usuários: $e");
-      users = []; // garante que a lista não fique null
+      users = []; 
     }
   }
 

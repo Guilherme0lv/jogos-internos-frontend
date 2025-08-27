@@ -88,9 +88,9 @@ class _EquipeEditDialogState extends State<EquipeEditDialog> {
               tecnicoMatricula: tecnicoController.text,
               esporteNome: widget.equipe.esporteNome,
               atletasMatricula: atletasController.text
-                  .split(",") // quebra por vírgula
-                  .map((a) => a.trim()) // remove espaços extras
-                  .where((a) => a.isNotEmpty) // evita strings vazias
+                  .split(",") 
+                  .map((a) => a.trim()) 
+                  .where((a) => a.isNotEmpty) 
                   .toList(),
             );
 

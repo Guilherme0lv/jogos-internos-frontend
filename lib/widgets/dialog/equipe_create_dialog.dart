@@ -43,7 +43,7 @@ class _EquipeDialogState extends State<EquipeDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              // Nome
+    
               TextFormField(
                 controller: _nomeController,
                 decoration: const InputDecoration(labelText: "Nome da Equipe"),
@@ -51,7 +51,7 @@ class _EquipeDialogState extends State<EquipeDialog> {
               ),
               const SizedBox(height: 12),
 
-              // Curso
+            
               FutureBuilder<List<Curso>>(
                 future: cursoController.getCursos(),
                 builder: (context, snapshot) {
@@ -75,8 +75,6 @@ class _EquipeDialogState extends State<EquipeDialog> {
                 },
               ),
               const SizedBox(height: 12),
-
-              // Campus
               FutureBuilder<List<Campus>>(
                 future: campusController.getCampi(),
                 builder: (context, snapshot) {
@@ -132,9 +130,9 @@ class _EquipeDialogState extends State<EquipeDialog> {
                 campusNome: _campusSelecionado!,
                 tecnicoMatricula: _tecnicoController.text,
                 atletasMatricula: _atletasController.text
-                    .split(",") // quebra por vírgula
-                    .map((a) => a.trim()) // remove espaços extras
-                    .where((a) => a.isNotEmpty) // evita strings vazias
+                    .split(",") 
+                    .map((a) => a.trim())
+                    .where((a) => a.isNotEmpty) 
                     .toList(),
               );
               widget.onSave(equipe);

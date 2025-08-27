@@ -6,14 +6,14 @@ class CampeonatoPageActions extends StatelessWidget {
   final String esporteNome;
   final String faseAtual;
   final JogoController jogoController;
-  final bool canEdit; // novo parâmetro
+  final bool canEdit;
 
   const CampeonatoPageActions({
     super.key,
     required this.esporteNome,
     required this.faseAtual,
     required this.jogoController,
-    required this.canEdit, // obrigatório
+    required this.canEdit, 
   });
 
   @override
@@ -37,7 +37,7 @@ class CampeonatoPageActions extends StatelessWidget {
                       ),
                     );
                   }
-                  // força rebuild do CampeonatoPage
+                
                   (context as Element).markNeedsBuild();
                 } catch (e) {
                   if (context.mounted) {

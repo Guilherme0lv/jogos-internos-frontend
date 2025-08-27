@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_web/controllers/evento_controller.dart';
 import 'package:projeto_web/controllers/usuario_controller.dart';
+import 'package:projeto_web/widgets/custom_drawer.dart';
 import 'package:projeto_web/widgets/custom_footer.dart';
 import 'package:projeto_web/widgets/dialog/evento_dialog.dart';
 
@@ -44,8 +45,8 @@ class _EventoPageState extends State<EventoPage> {
   @override
   Widget build(BuildContext context) {
     final bool isAdmin = usuarioController.usuario?.tipoUsuario == "ADMIN";
-
     return Scaffold(
+      drawer: CustomDrawer(usuario: usuarioController.usuario),
       appBar: AppBar(title: const Text("Eventos")),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())

@@ -8,6 +8,7 @@ import 'package:projeto_web/dto/fase_dto.dart';
 import 'package:projeto_web/models/esporte.dart';
 import 'package:projeto_web/widgets/campeonatoPage/eliminatorias_view.dart';
 import 'package:projeto_web/widgets/campeonatoPage/grupo_view.dart';
+import 'package:projeto_web/widgets/custom_drawer.dart';
 import 'package:projeto_web/widgets/custom_footer.dart';
 
 class CampeonatoPage extends StatefulWidget {
@@ -40,6 +41,7 @@ class _CampeonatoPageState extends State<CampeonatoPage> {
     final bool canEdit = isAdmin || isArbitro;
 
     return Scaffold(
+      drawer: CustomDrawer(usuario: usuarioController.usuario),
       appBar: AppBar(
         title: const Text("Campeonatos"),
         centerTitle: true,

@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            width: 350, // <-- controla a largura do "card"
+            width: 350,
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 24),
 
-                  // Campo login
+             
                   TextFormField(
                     controller: matriculaController,
                     decoration: const InputDecoration(
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Campo senha
+            
                   TextFormField(
                     controller: senhaController,
                     obscureText: true,
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 24),
 
-                  // Botão login
+             
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
@@ -125,7 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 16),
 
-                  // Botão cadastro
+             
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pushNamed(Routes.cadastro);
@@ -141,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
-      backgroundColor: Colors.green.shade50, // fundo verdinho suave
+      backgroundColor: Colors.green.shade50, 
     );
   }
 

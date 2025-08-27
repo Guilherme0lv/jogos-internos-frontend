@@ -7,14 +7,14 @@ class JogoCard extends StatelessWidget {
   final Jogo jogo;
   final JogoController jogoController;
   final VoidCallback onRefresh;
-  final bool canEdit; // novo parâmetro
+  final bool canEdit;
 
   const JogoCard({
     super.key,
     required this.jogo,
     required this.jogoController,
     required this.onRefresh,
-    required this.canEdit, // obrigatório
+    required this.canEdit, 
   });
 
   @override
@@ -52,7 +52,7 @@ class JogoCard extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            // --- Ícone de menu só se canEdit for true ---
+           
             if (canEdit)
               Align(
                 alignment: Alignment.centerRight,

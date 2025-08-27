@@ -28,8 +28,6 @@ class _EventoDialogState extends State<EventoDialog> {
     tipoEventoController = TextEditingController(
       text: widget.evento?.tipoEvento ?? "",
     );
-
-    // Converte datas vindas do backend (dd/MM/yyyy) para DateTime
     if (widget.evento?.dataInicio != null &&
         widget.evento!.dataInicio.isNotEmpty) {
       try {
@@ -58,7 +56,6 @@ class _EventoDialogState extends State<EventoDialog> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // Criar ou Editar
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               onPressed: () {
@@ -99,8 +96,6 @@ class _EventoDialogState extends State<EventoDialog> {
                 style: const TextStyle(color: Colors.white),
               ),
             ),
-
-            // Excluir
             if (isEdicao)
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
@@ -115,8 +110,6 @@ class _EventoDialogState extends State<EventoDialog> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-
-            // Fechar
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
               onPressed: () => Navigator.of(context).pop(),

@@ -55,7 +55,7 @@ class CampeonatoGruposView extends StatelessWidget {
                       for (var grupo in novosGrupos) {
                         await jogoController.gerarJogos(grupo.nome);
                       }
-                      onRefresh(); // Notifica a página pai para reconstruir
+                      onRefresh();
                       if (context.mounted) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -157,7 +157,7 @@ class CampeonatoGruposView extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        LayoutBuilder(
+                        LayoutBuilder(  
                           builder: (context, constraints) {
                             if (constraints.maxWidth < 600) {
                               return Column(
@@ -200,9 +200,6 @@ class CampeonatoGruposView extends StatelessWidget {
     return FutureBuilder<List<Classificacao>>(
       future: grupoController.getClassificacao(grupoNome),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
         if (snapshot.hasError) {
           return Text("Erro ao carregar classificação: ${snapshot.error}");
         }
@@ -259,9 +256,6 @@ class CampeonatoGruposView extends StatelessWidget {
     return FutureBuilder<List<Jogo>>(
       future: jogoController.getJogosByGrupo(grupoNome),
       builder: (context, snapshotJogos) {
-        if (snapshotJogos.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
-        }
         if (snapshotJogos.hasError) {
           return Center(child: Text("Erro: ${snapshotJogos.error}"));
         }
@@ -278,7 +272,7 @@ class CampeonatoGruposView extends StatelessWidget {
                   child: JogoCard(
                     jogo: jogo,
                     jogoController: jogoController,
-                    onRefresh: () => onRefresh(), // Passa a função de refresh
+                    onRefresh: () => onRefresh(), 
                     canEdit: canEdit,
                   ),
                 ),

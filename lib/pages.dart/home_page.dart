@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_web/controllers/usuario_controller.dart';
 import 'package:projeto_web/routes/routes.dart';
+import 'package:projeto_web/widgets/custom_drawer.dart';
 import 'package:projeto_web/widgets/custom_footer.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -21,55 +22,14 @@ class _MyHomePageState extends State<MyHomePage> {
     final tipo = usuario?.tipoUsuario ?? "";
 
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-              decoration: const BoxDecoration(color: Colors.green),
-              child: Row(
-                children: [
-                  const Icon(Icons.person, color: Colors.white, size: 40),
-                  const SizedBox(width: 10),
-                  Text(
-                    usuario?.nomeCompleto ?? "Usuário",
-                    style: const TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                ],
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.home),
-              title: const Text('Home'),
-              onTap: () {
-                if (ModalRoute.of(context)?.settings.name == Routes.homePage) {
-                  Navigator.of(context).pop();
-                } else {
-                  Navigator.of(
-                    context,
-                  ).pushNamedAndRemoveUntil(Routes.homePage, (route) => false);
-                }
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.logout),
-              title: const Text('Sair'),
-              onTap: () {
-                Navigator.of(
-                  context,
-                ).pushNamedAndRemoveUntil(Routes.login, (route) => false);
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: CustomDrawer(usuario: usuario),
       appBar: AppBar(
         backgroundColor: Colors.green,
         titleTextStyle: const TextStyle(fontSize: 20, color: Colors.white),
         iconTheme: const IconThemeData(color: Colors.white),
         title: Text(widget.title),
       ),
-      backgroundColor: Colors.grey[200], // Fundo cinza claro
+      backgroundColor: Colors.grey[200], 
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
@@ -83,7 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  /// Decide os cards com base no tipo de usuário
   Widget _buildCustomCards(String tipoUsuario) {
     final rotasBasicas = [
       {"label": "Campeonato", "route": Routes.campeonatos},
@@ -112,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Column(
       children: [
-        // Botão de Campeonatos em destaque
+      
         _buildElevatedButton(
           context,
           rotasPermitidas[0]["label"]!,
@@ -120,13 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
           isLarge: true,
         ),
         const SizedBox(height: 16),
-        // Demais botões em grid
+     
         Wrap(
           spacing: 16.0,
           runSpacing: 16.0,
           alignment: WrapAlignment.center,
           children: rotasPermitidas
-              .skip(1) // Ignora o primeiro item (Campeonatos)
+              .skip(1) 
               .map(
                 (r) => _buildElevatedButton(context, r["label"]!, r["route"]!),
               )
@@ -153,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
-          elevation: 6, // Adiciona sombra
+          elevation: 10, 
           padding: const EdgeInsets.all(16.0),
         ),
         child: Column(
@@ -180,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  // Helper para retornar um ícone com base no texto
+ 
   IconData _getIconForRoute(String text) {
     switch (text) {
       case "Campeonato":
@@ -192,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
       case "Campus":
         return Icons.location_city;
       case "Esportes":
-        return Icons.sports;
+        return Icons.sports_baseball;
       case "Eventos":
         return Icons.event;
       case "Área do Coordenador":

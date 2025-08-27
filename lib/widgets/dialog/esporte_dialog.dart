@@ -21,7 +21,6 @@ class EsporteDialog extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // Botão Criar ou Editar
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               onPressed: () {
@@ -44,13 +43,8 @@ class EsporteDialog extends StatelessWidget {
                       );
 
                       if (isEdicao) {
-                      
-                        await esporteController.updateEsporte(
-                          novoOuEditado,
-                          esporte!.nome,
-                        );
+                        await esporteController.updateEsporte(novoOuEditado, esporte!.nome);
                       } else {
-                        // criação
                         await esporteController.createEsporte(novoOuEditado);
                       }
                     },
@@ -69,7 +63,7 @@ class EsporteDialog extends StatelessWidget {
                   await esporteController.removeEsporte(esporte!.nome);
                   Navigator.of(
                     context,
-                  ).pop(); // fecha o dialog depois de excluir
+                  ).pop(); 
                 },
                 child: const Text(
                   "Excluir",

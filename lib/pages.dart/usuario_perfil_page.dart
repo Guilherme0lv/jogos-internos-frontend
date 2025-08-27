@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_web/controllers/usuario_controller.dart';
 import 'package:projeto_web/models/usuario.dart';
+import 'package:projeto_web/widgets/custom_drawer.dart';
 import 'package:projeto_web/widgets/custom_footer.dart';
 import 'package:projeto_web/widgets/dialog/generic_edit_dialog.dart';
 
@@ -26,8 +27,6 @@ class _UsuarioPerfilPageState extends State<UsuarioPerfilPage> {
 
   void _editarPerfil() {
     if (usuario == null) return;
-
-    // Campos do perfil para edição, note que 'cursoNome' está aqui.
     final campos = {
       'nomeCompleto': usuario!.nomeCompleto,
       'cursoNome': usuario!.cursoNome,
@@ -46,11 +45,11 @@ class _UsuarioPerfilPageState extends State<UsuarioPerfilPage> {
             final atualizado = Usuario(
               matricula: usuario!.matricula,
               nomeCompleto: dados['nomeCompleto']!,
-              senha: usuario!.senha, // Mantém a senha atual
+              senha: usuario!.senha,
               cursoNome: dados['cursoNome']!,
               apelido: dados['apelido']!,
               telefone: dados['telefone']!,
-              tipoUsuario: usuario!.tipoUsuario, // Mantém o tipo de usuário
+              tipoUsuario: usuario!.tipoUsuario, 
             );
 
             await usuarioController.updateUser(
@@ -135,6 +134,7 @@ class _UsuarioPerfilPageState extends State<UsuarioPerfilPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: CustomDrawer(usuario: usuarioController.usuario),
       appBar: AppBar(
         title: const Text('Meu Perfil'),
         backgroundColor: Colors.green,
@@ -149,7 +149,7 @@ class _UsuarioPerfilPageState extends State<UsuarioPerfilPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // --- Seção de Perfil ---
+                
                       Card(
                         elevation: 4,
                         shape: RoundedRectangleBorder(

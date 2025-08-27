@@ -44,7 +44,7 @@ class CampeonatoEliminatoriaView extends StatelessWidget {
               child: JogoCard(
                 jogo: jogo,
                 jogoController: jogoController,
-                onRefresh: () => onRefresh(), // Passa a função de refresh
+                onRefresh: () => onRefresh(), 
                 canEdit: canEdit,
               ),
             );

@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:projeto_web/controllers/equipe_controller.dart';
 import 'package:projeto_web/controllers/esporte_controller.dart';
 import 'package:projeto_web/controllers/usuario_controller.dart';
+import 'package:projeto_web/widgets/custom_drawer.dart';
 import 'package:projeto_web/widgets/custom_footer.dart';
 import 'package:projeto_web/widgets/dialog/equipe_create_dialog.dart';
 import 'package:projeto_web/widgets/dialog/equipe_edit_dialog.dart';
@@ -62,7 +63,8 @@ class _EquipePageState extends State<EquipePage> {
     final bool isAdmin = usuarioController.usuario?.tipoUsuario == "ADMIN";
     final bool isTecnico = usuarioController.usuario?.tipoUsuario == "TECNICO";
     return Scaffold(
-      appBar: AppBar(title: const Text("Equipes por Esporte")),
+      drawer: CustomDrawer(usuario: usuarioController.usuario),
+      appBar: AppBar(title: const Text("Equipes")),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : errorMessage != null
@@ -122,7 +124,7 @@ class _EquipePageState extends State<EquipePage> {
                                         "Curso: ${equipe.cursoNome} - Campus: ${equipe.campusNome} - Tecnico: ${equipe.tecnicoMatricula}",
                                       ),
                                       trailing: (() {
-                                        // ADMIN pode sempre
+                                      
                                         if (isAdmin)
                                           return IconButton(
                                             icon: const Icon(Icons.menu),
@@ -130,7 +132,7 @@ class _EquipePageState extends State<EquipePage> {
                                                 _abrirDialogEdicao(equipe),
                                           );
 
-                                        // TECNICO só se for do mesmo curso
+                                     
                                         if (isTecnico &&
                                             usuarioController
                                                     .usuario
@@ -143,7 +145,7 @@ class _EquipePageState extends State<EquipePage> {
                                           );
                                         }
 
-                                        // Outros usuários não podem editar
+                                      
                                         return null;
                                       })(),
                                     ),

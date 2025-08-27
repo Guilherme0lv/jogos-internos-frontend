@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:projeto_web/controllers/curso_controller.dart';
 import 'package:projeto_web/controllers/usuario_controller.dart';
+import 'package:projeto_web/widgets/custom_drawer.dart';
 import 'package:projeto_web/widgets/custom_footer.dart';
 import 'package:projeto_web/widgets/dialog/curso_dialog.dart';
 
@@ -45,6 +46,7 @@ class _CursoPageState extends State<CursoPage> {
   Widget build(BuildContext context) {
     final bool isAdmin = usuarioController.usuario?.tipoUsuario == "ADMIN";
     return Scaffold(
+      drawer: CustomDrawer(usuario: usuarioController.usuario),
       appBar: AppBar(title: const Text("Cursos")),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())

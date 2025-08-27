@@ -20,7 +20,7 @@ class CursoDialog extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // Botão Criar ou Editar
+  
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               onPressed: () {
@@ -37,15 +37,12 @@ class CursoDialog extends StatelessWidget {
                         nome: valores["Nome"]!,
                         tipoCurso: valores["Tipo"]!,
                       );
-
                       if (isEdicao) {
-                        // edição
                         await cursoController.updateCurso(
                           novoOuEditado,
                           curso!.nome,
                         );
                       } else {
-                        // criação
                         await cursoController.createCurso(novoOuEditado);
                       }
                     },
@@ -64,7 +61,7 @@ class CursoDialog extends StatelessWidget {
                   await cursoController.removeCurso(curso!.nome);
                   Navigator.of(
                     context,
-                  ).pop(); // fecha o dialog depois de excluir
+                  ).pop(); 
                 },
                 child: const Text(
                   "Excluir",
